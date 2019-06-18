@@ -25,12 +25,13 @@ class CreateNewUserHandler
         $this->users = $users;
     }
 
-
     public function handle(CreateNewUser $createNewUser)
     {
 
         $user = new User(
-            new Username($createNewUser->getUsername()), new Email($createNewUser->getEmail())
+            null,
+            new Username($createNewUser->getUsername()),
+            new Email($createNewUser->getEmail())
         );
 
         $this->users->add($user);

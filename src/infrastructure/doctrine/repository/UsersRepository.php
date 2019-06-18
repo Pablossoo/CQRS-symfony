@@ -9,42 +9,25 @@
 namespace App\infrastructure\doctrine\repository;
 
 
-use App\domain\exception\UserNotFoundException;
 use App\domain\User;
-use App\domain\VO\Email;
-use App\domain\VO\Username;
-use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 class UsersRepository implements \App\domain\repository\Users
 {
     /** @var EntityManager */
-    private $connection;
+    private $entityManager;
 
 
-    public function __construct(Connection $connection)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->connection = $connection;
+        $this->entityManager = $entityManager;
     }
 
-    public function add(User $users): void
+    public function add(User $user): void
     {
-        $this->connection->insert('user',['id'=>1,'email' => 'asdasda']);
-
-    }
-
-    public function getByEmail(Email $email): User
-    {
-        $user = $this->connection->createQueryBuilder()->select('*')
-            ->from('user','u')->where('u.email = ?')->setParameter(0,$email->getEmail());
-
-        $result = $user->execute()->fetchAll();
-        if ($result === null)
-        {
-            throw UserNotFoundException::WithTo($email);
-        }
-
-        return new User(1,new Username($result->usenrame), new Email($result->email));
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 }
