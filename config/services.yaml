@@ -24,3 +24,11 @@ services:
         resource: '../src/UI/web/controllers'
         tags: ['controller.service_arguments']
 
+
+    App\application\command\CreateNewUserHandler:
+        class: App\application\command\CreateNewUserHandler
+        tags:
+          - { name: tactician.handler, typehints: true }
+
+
+

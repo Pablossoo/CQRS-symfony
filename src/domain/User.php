@@ -14,7 +14,7 @@ use App\domain\VO\Username;
 
 final class User
 {
-    /** @var int */
+    /** @var int|null */
     private $id;
 
     /** @var Username */
@@ -24,7 +24,7 @@ final class User
     private $email;
 
 
-    public function __construct(int $id, Username $username, Email $email)
+    public function __construct(?int $id, Username $username, Email $email)
     {
         $this->id = $id;
         $this->username = $username;
