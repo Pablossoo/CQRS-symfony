@@ -27,7 +27,7 @@ class UserDbalViewQuery implements UserQuery
     public function getByEmail(string $email): UserView
     {
             $queryBuilder = $this->connection->createQueryBuilder()
-                    ->from('user')
+                ->from('user')
                 ->select('username_username', 'email_email')
                 ->where('email_email = :email')
                 ->setParameter('email', $email);
@@ -48,7 +48,7 @@ class UserDbalViewQuery implements UserQuery
     public function getLastCreatedUser(): UserView
     {
             $select = $this->connection->createQueryBuilder()
-                    ->from('user')
+                ->from('user')
                 ->select('username_username','email_email')
                 ->orderBy('id', 'desc')
                 ->setMaxResults(1);
