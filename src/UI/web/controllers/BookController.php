@@ -4,36 +4,30 @@ namespace App\UI\web\controllers;
 
 
 use App\application\command\CreateNewUser;
-use App\application\query\projection\UsersProjection;
-use App\infrastructure\doctrine\repository\UsersRepository;
+use App\application\query\user\UserQuery;
 use League\Tactician\CommandBus;
 use Symfony\Component\HttpFoundation\Response;
 
 
 class BookController
 {
+    /** @var UserQuery */
+    private $userQuery;
 
-    /** @var UsersProjection */
-    private $userProjection;
-
-    /** @var UsersRepository */
-    private $userRepository;
-
-    /** @var CommandBus  */
+    /** @var CommandBus */
     private $commandBus;
 
 
-    public function __construct(CommandBus $commandBus, UsersProjection $userProjection, UsersRepository $userRepository)
+    public function __construct(UserQuery $userQuery, CommandBus $commandBus)
     {
+        $this->userQuery = $userQuery;
         $this->commandBus = $commandBus;
-        $this->userProjection = $userProjection;
-        $this->userRepository = $userRepository;
     }
 
-    public function create()
-   {
 
-       $this->commandBus->handle(new CreateNewUser('Pawel','Pawel@wp.pl'));
-        return new Response('success');
-   }
+    public function create(): Response
+    {
+        $this->commandBus->handle(new CreateNewUser('Pawel', 'pawe@wp.pl'));
+        return new Response($this->userQuery->getLastCreatedUser()->getEmail());
+    }
 }

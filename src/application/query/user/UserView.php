@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pawel
- * Date: 06.06.2019
- * Time: 00:29
- */
 
-namespace App\application\query;
+namespace App\application\query\user;
 
 
 class UserView

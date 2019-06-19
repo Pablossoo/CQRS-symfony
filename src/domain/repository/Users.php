@@ -7,7 +7,5 @@ use App\domain\User;
 
 interface Users
 {
-
     public function add(User $user): void;
-
 }
