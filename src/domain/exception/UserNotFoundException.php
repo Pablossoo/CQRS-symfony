@@ -15,6 +15,6 @@ class UserNotFoundException extends \Exception
 {
    public static function WithTo(Email $email)
    {
-       return new self(sprintf("user with email %s not exist", $email));
+       return new self(sprintf("user with email %s not exist", $email->getEmail()));
    }
 }

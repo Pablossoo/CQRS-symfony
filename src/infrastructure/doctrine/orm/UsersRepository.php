@@ -6,7 +6,7 @@
  * Time: 23:37
  */
 
-namespace App\infrastructure\doctrine\repository;
+namespace App\infrastructure\doctrine\orm;
 
 
 use App\domain\User;
