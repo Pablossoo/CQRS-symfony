@@ -5,11 +5,6 @@ namespace App\application\query\user;
 
 class UserView
 {
-    /** @var string */
-  private $username;
-
-  /** @var string */
-  private $email;
 
     /**
      * UserView constructor.
@@ -38,6 +33,11 @@ class UserView
         return $this->email;
     }
 
+    /** @var string */
+    private $username;
+
+    /** @var string */
+    private $email;
 
 
 }
