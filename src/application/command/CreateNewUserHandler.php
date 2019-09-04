@@ -2,32 +2,29 @@
 
 namespace App\application\command;
 
-use App\domain\repository\Users;
+use App\domain\DTO\CreateUserDTO;
+use App\domain\repository\UsersRepositoryInterface;
 use App\domain\User;
-use App\domain\VO\Email;
-use App\domain\VO\Username;
+use App\infrastructure\doctrine\orm\UserRepositoryDoctrineAdapter;
 
 class CreateNewUserHandler
 {
 
-    /** @var Users */
-    private $users;
+    /** @var UserRepositoryDoctrineAdapter */
+    private $userRepositoryDoctrineAdapter;
 
-    public function __construct(Users $users)
+    public function __construct(UsersRepositoryInterface $userRepositoryDoctrineAdapter)
     {
-        $this->users = $users;
+        $this->userRepositoryDoctrineAdapter = $userRepositoryDoctrineAdapter;
     }
 
-    public function handle(CreateNewUser $createNewUser)
+    public function handle(CreateNewUser $createNewUser): void
     {
+        $createUserDTO = new CreateUserDTO($createNewUser->getUsername(),
+        $createNewUser->getEmail());
 
-        $user = new User(
-            null,
-            new Username($createNewUser->getUsername()),
-            new Email($createNewUser->getEmail())
-        );
 
-        $this->users->add($user);
-
+        $user = User::CreateFromDto($createUserDTO);
+        $this->userRepositoryDoctrineAdapter->save($user);
     }
 }

@@ -1,3 +1,3 @@
 index:
     path: /create-user
-    controller: App\UI\web\controllers\BookController::create
+    controller: App\UI\web\controllers\UserController::create

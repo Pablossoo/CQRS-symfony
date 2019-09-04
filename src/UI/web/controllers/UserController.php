@@ -9,7 +9,7 @@ use League\Tactician\CommandBus;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class BookController
+class UserController
 {
     /** @var UserQuery */
     private $userQuery;

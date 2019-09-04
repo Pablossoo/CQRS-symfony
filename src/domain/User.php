@@ -8,42 +8,39 @@
 
 namespace App\domain;
 
-
-use App\domain\VO\Email;
-use App\domain\VO\Username;
+use App\domain\DTO\CreateUserDTO;
 
 final class User
 {
     /** @var int|null */
     private $id;
 
-    /** @var Username */
-    private $username;
+    /** @var string */
+    private $name;
 
-    /** @var Email */
+    /** @var string */
     private $email;
 
-
-    public function __construct(?int $id, Username $username, Email $email)
+    public function __construct(?int $id, $name, $email)
     {
         $this->id = $id;
-        $this->username = $username;
+        $this->name = $name;
         $this->email = $email;
     }
 
-    /**
-     * @return Username
-     */
-    public function getUsername(): Username
+    public static function CreateFromDto(CreateUserDTO $createUserDTO): User
     {
-        return $this->username;
+        return new self(
+            null,
+            $createUserDTO->name,
+            $createUserDTO->email);
     }
 
-    /**
-     * @return Email
-     */
-    public function getEmail(): Email
+    public function toDto(): CreateUserDTO
     {
-        return $this->email;
+        return new CreateUserDTO(
+            $this->name,
+            $this->email
+        );
     }
 }

@@ -7,7 +7,6 @@ namespace App\infrastructure\doctrine\dbal;
 use App\application\query\user\UserQuery;
 use App\application\query\user\UserView;
 use App\domain\exception\UserNotFoundException;
-use App\domain\VO\Email;
 use Doctrine\DBAL\Connection;
 
 /**
@@ -33,7 +32,7 @@ class UserDbalViewQuery implements UserQuery
                 ->setParameter('email', $email);
 
         if (!$queryBuilder){
-                    throw UserNotFoundException::WithTo(new Email($email));
+                    throw UserNotFoundException::WithTo($email);
         }
         $data = $queryBuilder->execute()->fetch();
         return new UserView($data['username_username'], $data['email_email']);

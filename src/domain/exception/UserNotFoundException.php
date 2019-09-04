@@ -2,13 +2,10 @@
 
 namespace App\domain\exception;
 
-
-use App\domain\VO\Email;
-
 class UserNotFoundException extends \Exception
 {
-   public static function WithTo(Email $email)
+   public static function WithTo(string $email)
    {
-       return new self(sprintf("user with email %s not exist", $email->getEmail()));
+       return new self(sprintf("user with email %s not exist", $email));
    }
 }
