@@ -17,7 +17,7 @@ services:
     image: nginx:1.15.3-alpine
     restart: on-failure
     volumes:
-      - './projekty/CQRS-symfony/public:/usr/src/app'
+      - './projekty/CQRS-symfony/:/usr/src/app'
       - './docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro'
     ports:
       - '80:80'
