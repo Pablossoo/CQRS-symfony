@@ -7,7 +7,7 @@ use App\application\query\user\UserQuery;
 use League\Tactician\CommandBus;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserController
+final class UserController
 {
     /** @var UserQuery */
     private $userQuery;

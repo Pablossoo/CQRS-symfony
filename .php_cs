@@ -6,6 +6,7 @@ $finder = PhpCsFixer\Finder::create()
 ;
 
 return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
@@ -24,7 +25,8 @@ return PhpCsFixer\Config::create()
         'phpdoc_scalar' => true,
         'trailing_comma_in_multiline_array' => true,
         'whitespace_after_comma_in_array' => true,
-        'phpdoc_line_span' => ['property' => 'single']
+        'phpdoc_line_span' => ['property' => 'single'],
+        'final_class' => true
     ])
     ->setFinder($finder)
 ;

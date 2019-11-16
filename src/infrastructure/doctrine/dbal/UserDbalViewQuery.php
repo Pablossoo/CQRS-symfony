@@ -10,7 +10,7 @@ use Doctrine\DBAL\Connection;
 /**
  * @author Paweł Łukowski <pawell.lukowski@gmail.com>
  */
-class UserDbalViewQuery implements UserQuery
+final class UserDbalViewQuery implements UserQuery
 {
     /** @var Connection */
     private $connection;

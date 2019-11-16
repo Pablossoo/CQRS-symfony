@@ -2,6 +2,6 @@
 
 namespace App\domain\event;
 
-class UserCreated
+final class UserCreated
 {
 }

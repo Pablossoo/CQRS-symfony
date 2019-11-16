@@ -6,7 +6,7 @@ use App\domain\repository\UsersRepositoryInterface;
 use App\domain\User;
 use Doctrine\ORM\EntityManagerInterface;
 
-class UserRepositoryDoctrineAdapter implements UsersRepositoryInterface
+final class UserRepositoryDoctrineAdapter implements UsersRepositoryInterface
 {
     /** @var EntityManagerInterface */
     private $EntityManager;

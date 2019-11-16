@@ -7,7 +7,7 @@ use App\domain\repository\UsersRepositoryInterface;
 use App\domain\User;
 use App\infrastructure\doctrine\orm\UserRepositoryDoctrineAdapter;
 
-class CreateNewUserHandler
+final class CreateNewUserHandler
 {
     /** @var UserRepositoryDoctrineAdapter */
     private $userRepositoryDoctrineAdapter;

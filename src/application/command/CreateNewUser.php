@@ -2,7 +2,7 @@
 
 namespace App\application\command;
 
-class CreateNewUser
+final class CreateNewUser
 {
     /** @var string */
     private $username;

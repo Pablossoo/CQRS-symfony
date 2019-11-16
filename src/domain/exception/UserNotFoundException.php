@@ -2,7 +2,7 @@
 
 namespace App\domain\exception;
 
-class UserNotFoundException extends \Exception
+final class UserNotFoundException extends \Exception
 {
     public static function WithTo(string $email)
     {

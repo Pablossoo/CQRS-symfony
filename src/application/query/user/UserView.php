@@ -2,7 +2,7 @@
 
 namespace App\application\query\user;
 
-class UserView
+final class UserView
 {
     /** @var string */
     private $username;

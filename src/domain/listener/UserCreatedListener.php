@@ -2,6 +2,6 @@
 
 namespace App\domain\listener;
 
-class UserCreatedListener
+final class UserCreatedListener
 {
 }

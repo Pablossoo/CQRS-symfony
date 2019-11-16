@@ -2,7 +2,7 @@
 
 namespace App\domain\DTO;
 
-class CreateUserDTO
+final class CreateUserDTO
 {
     /** @var string */
     public $name;
