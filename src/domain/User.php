@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pawel
- * Date: 05.06.2019
- * Time: 23:27.
- */
 
 namespace App\domain;
 
 use App\domain\DTO\CreateUserDTO;
+use Ramsey\Uuid\Uuid;
 
 final class User
 {
@@ -21,26 +16,29 @@ final class User
     /** @var string */
     private $email;
 
-    public function __construct(?int $id, $name, $email)
+    /** @var string */
+    private $password;
+
+    /** @var array */
+    private $roles = [];
+
+    public function __construct(?int $id, string $name, string $email, string $password, array $roles)
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+        $this->password = $password;
+        $this->roles = $roles;
     }
 
     public static function CreateFromDto(CreateUserDTO $createUserDTO): User
     {
         return new self(
-            null,
+            Uuid::uuid4(),
             $createUserDTO->name,
-            $createUserDTO->email);
-    }
-
-    public function toDto(): CreateUserDTO
-    {
-        return new CreateUserDTO(
-            $this->name,
-            $this->email
+            $createUserDTO->email,
+            $createUserDTO->password,
+            $createUserDTO->role
         );
     }
 }

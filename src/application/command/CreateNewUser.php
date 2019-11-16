@@ -2,27 +2,47 @@
 
 namespace App\application\command;
 
+use App\domain\Role;
+
 final class CreateNewUser
 {
     /** @var string */
-    private $username;
+    private $name;
 
     /** @var string */
     private $email;
 
-    public function __construct(string $username, string $email)
+    /** @var string */
+    private $password;
+
+    /** @var Role */
+    private $roles = [];
+
+    public function __construct(string $name, string $email, string $password, Role $role)
     {
-        $this->username = $username;
+        $this->name = $name;
         $this->email = $email;
+        $this->password = $password;
+        $this->roles = $role;
     }
 
-    public function getUsername(): string
+    public function getName(): string
     {
-        return $this->username;
+        return $this->name;
     }
 
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles->getDefaultRole();
     }
 }
