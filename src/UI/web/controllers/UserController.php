@@ -24,7 +24,6 @@ class UserController
         $this->commandBus = $commandBus;
     }
 
-
     public function create(): Response
     {
         $this->commandBus->handle(new CreateNewUser('Pawel', 'pawe@wp.pl'));
