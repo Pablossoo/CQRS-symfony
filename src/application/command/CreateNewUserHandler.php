@@ -9,7 +9,6 @@ use App\infrastructure\doctrine\orm\UserRepositoryDoctrineAdapter;
 
 class CreateNewUserHandler
 {
-
     /** @var UserRepositoryDoctrineAdapter */
     private $userRepositoryDoctrineAdapter;
 
@@ -22,7 +21,6 @@ class CreateNewUserHandler
     {
         $createUserDTO = new CreateUserDTO($createNewUser->getUsername(),
         $createNewUser->getEmail());
-
 
         $user = User::CreateFromDto($createUserDTO);
         $this->userRepositoryDoctrineAdapter->save($user);

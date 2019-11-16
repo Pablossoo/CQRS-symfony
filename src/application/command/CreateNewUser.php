@@ -2,7 +2,6 @@
 
 namespace App\application\command;
 
-
 class CreateNewUser
 {
     /** @var string */
@@ -26,5 +25,4 @@ class CreateNewUser
     {
         return $this->email;
     }
-
 }
