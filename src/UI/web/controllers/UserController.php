@@ -2,12 +2,10 @@
 
 namespace App\UI\web\controllers;
 
-
 use App\application\command\CreateNewUser;
 use App\application\query\user\UserQuery;
 use League\Tactician\CommandBus;
 use Symfony\Component\HttpFoundation\Response;
-
 
 class UserController
 {
@@ -16,7 +14,6 @@ class UserController
 
     /** @var CommandBus */
     private $commandBus;
-
 
     public function __construct(UserQuery $userQuery, CommandBus $commandBus)
     {
@@ -27,6 +24,7 @@ class UserController
     public function create(): Response
     {
         $this->commandBus->handle(new CreateNewUser('Pawel', 'pawe@wp.pl'));
+
         return new Response($this->userQuery->getLastCreatedUser()->getEmail());
     }
 }

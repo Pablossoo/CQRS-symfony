@@ -2,14 +2,10 @@
 
 namespace App\application\query\user;
 
-
 class UserView
 {
-
     /**
      * UserView constructor.
-     * @param string $username
-     * @param string $email
      */
     public function __construct(string $username, string $email)
     {
@@ -17,17 +13,11 @@ class UserView
         $this->email = $email;
     }
 
-    /**
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
@@ -38,6 +28,4 @@ class UserView
 
     /** @var string */
     private $email;
-
-
 }
