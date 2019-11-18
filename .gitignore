@@ -7,5 +7,6 @@
 /var/
 /vendor/
 /.env
-.idea/
+.idea
 php-cs-fixer-v2.phar
+phpunit.phar
